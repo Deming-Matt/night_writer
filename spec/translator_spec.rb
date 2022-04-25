@@ -1,4 +1,7 @@
-require './lib/translator.rb'
+require 'simplecov'
+SimpleCov.start
+
+require_relative '../lib/translator.rb'
 
 RSpec.describe Translator do
   before :each do
