@@ -1,14 +1,14 @@
 require 'pry'
 require './lib/translator'
-
-include Translator
-
+@translator = Translator.new
+# binding.pry
 file = File.open(ARGV[0], "r")
 
 file2 = File.open(ARGV[1], "w")
 File.open(file, "r") do |file_object|
   file_object.each_char do |char|
-    file2 << translate(char)
+    file2 << @translator.translate(char)
+    # @translator.braille_lines(file2)
   end
 end
 binding.pry
