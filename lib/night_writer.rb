@@ -1,22 +1,24 @@
 require 'pry'
 require './lib/translator'
-translator = Translator.new
-# binding.pry
 file = File.open(ARGV[0], "r")
 file2 = File.open(ARGV[1], "w")
+test = []
 
-File.open(file, "r") do |file_object|
-  file_object.each_char do |char|
-     translator.add_char(char)
-    # @translator.braille_lines(file2)
+file.read.chomp.chars.each_slice(3) do |char_arr| #"hey yo"
+  translator = Translator.new
+  char_arr.each do |char|
+    translator.add_char(char)
   end
-  # binding.pry
+  binding.pry
+  file2 << translator.output
+  test << translator.output
 end
-file2 << translator.output
+
 file2.close
-# File.write(ARGV[1], File.read(file))
+file.rewind
+
 puts "Created '#{ARGV[1]}' containing #{file.read.length} characters"
-# p File.read(ARGV[1])
+
 file.close
 
 # File.open(ARGV[0], 'rb') do |input_stream|
