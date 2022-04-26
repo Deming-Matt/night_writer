@@ -45,9 +45,6 @@ RSpec.describe Translator do
     })
   end
 
-  it 'can take the letter "a" and show its braille pattern' do
-  end
-
   it 'can take entered text and make the correct braille syntax of it' do
     input = "hey"
     @translator.add_eng_char("h")
