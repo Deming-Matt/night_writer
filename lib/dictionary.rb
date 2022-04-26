@@ -1,20 +1,8 @@
-require 'simplecov'
-SimpleCov.start
 
-require_relative '../lib/translator.rb'
-# require_relative '../lib/night_writer.rb'
-require_relative '../lib/dictionary.rb'
-RSpec.describe Translator do
-  before :each do
-    @translator = Translator.new
-  end
-
-  it 'exists' do
-    expect(@translator).to be_a(Translator)
-  end
-
-  it "can show a hash for all the letters and their 'base' braille equivelent" do
-    expect(@translator.eng_braille_dict).to eq({
+module Dictionary
+  def eng_braille_dict
+    # first two are top two, then mid two, then bot two
+    eng_braille = {
       "a" => ["0.","..",".."],
       "b" => ["0.","0.",".."],
       "c" => ["00","..",".."],
@@ -42,17 +30,8 @@ RSpec.describe Translator do
       "y" => ["00",".0","00"],
       "z" => ["0.",".0","00"],
       " " => ["..","..",".."]
-    })
+    }
   end
+  
 
-  it 'can take the letter "a" and show its braille pattern' do
-  end
-
-  it 'can take entered text and make the correct braille syntax of it' do
-    input = "hey"
-    @translator.add_char("h")
-    @translator.add_char("e")
-    @translator.add_char("y")
-    expect(@translator.output).to eq("0.0.00\n00.0.0\n....00")
-  end
 end
