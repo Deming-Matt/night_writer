@@ -1,7 +1,6 @@
 
 module Dictionary
   def eng_braille_dict
-    # first two are top two, then mid two, then bot two
     eng_braille = {
       "a" => ["0.","..",".."],
       "b" => ["0.","0.",".."],
