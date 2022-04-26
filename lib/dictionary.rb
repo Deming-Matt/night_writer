@@ -32,6 +32,9 @@ module Dictionary
       " " => ["..","..",".."]
     }
   end
-  
+
+  def braille_eng
+    eng_braille_dict.invert
+  end
 
 end

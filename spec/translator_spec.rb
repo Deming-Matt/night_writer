@@ -50,9 +50,13 @@ RSpec.describe Translator do
 
   it 'can take entered text and make the correct braille syntax of it' do
     input = "hey"
-    @translator.add_char("h")
-    @translator.add_char("e")
-    @translator.add_char("y")
-    expect(@translator.output).to eq("0.0.00\n00.0.0\n....00")
+    @translator.add_eng_char("h")
+    @translator.add_eng_char("e")
+    @translator.add_eng_char("y")
+    expect(@translator.output).to eq("0.0.00\n00.0.0\n....00\n")
+  end
+
+  it "can take a row of braille and put it into readable chunks to return a letter" do #hey
+    expect(@translator.slice_braille(["0.0.00\n", "00.0.0\n", "....00\n"])).to eq([["0.","00",".."], ["0.", ".0", ".."], ["00",".0","00"]])
   end
 end
