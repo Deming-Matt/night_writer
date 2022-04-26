@@ -4,14 +4,12 @@ file = File.open(ARGV[0], "r")
 file2 = File.open(ARGV[1], "w")
 test = []
 
-file.read.chomp.chars.each_slice(3) do |char_arr| #"hey yo"
+file.read.chomp.chars.each_slice(8) do |char_arr| #"hey yo"
   translator = Translator.new
   char_arr.each do |char|
     translator.add_char(char)
   end
-  binding.pry
   file2 << translator.output
-  test << translator.output
 end
 
 file2.close
