@@ -50,11 +50,5 @@ class Translator
       #{ |line| line.chars.shift(2).join}
       # line.slice!(0..1)
   end
-  # def add_braille_char(input)
-  #   if braille_eng[input] != nil
-  #     @top << braille_eng[input][0]
-  #     @mid << braille_eng[input][1]
-  #     @bot << braille_eng[input][2]
-  #   end
-  # end
+  # d
 end

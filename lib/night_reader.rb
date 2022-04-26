@@ -1,11 +1,11 @@
 require 'pry'
 require './lib/translator'
-file = File.readlines(ARGV[0], "r")
+file = File.open(ARGV[0], "r")
 file2 = File.open(ARGV[1], "w")
-translator = Translator.new
 
 binding.pry
 file2 << file.read.each do |line|
+  translator = Translator.new
 
   translator.slice_braille(line)
   # until line.find_index("\n")
