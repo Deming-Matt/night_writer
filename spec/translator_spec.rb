@@ -15,42 +15,44 @@ RSpec.describe Translator do
 
   it "can show a hash for all the letters and their 'base' braille equivelent" do
     expect(@translator.eng_braille_dict).to eq({
-      "a" => "0.\n..\n..\n",
-      "b" => "0.\n0.\n..\n",
-      "c" => "00\n..\n..\n",
-      "d" => "00\n.0\n..\n",
-      "e" => "0.\n.0\n..\n",
-      "f" => "00\n0.\n..\n",
-      "g" => "00\n00\n..\n",
-      "h" => "0.\n00\n..\n",
-      "i" => ".0\n0.\n..\n",
-      "j" => ".0\n00\n..\n",
-      "k" => "0.\n..\n0.\n",
-      "l" => "0.\n0.\n0.\n",
-      "m" => "00\n..\n0.\n",
-      "n" => "00\n.0\n0.\n",
-      "o" => "0.\n.0\n0.\n",
-      "p" => "00\n0.\n0.\n",
-      "q" => "00\n00\n0.\n",
-      "r" => "0.\n00\n0.\n",
-      "s" => ".0\n0.\n0.\n",
-      "t" => ".0\n00\n0.\n",
-      "u" => "0.\n..\n00\n",
-      "v" => "0.\n0.\n00\n",
-      "w" => ".0\n00\n.0\n",
-      "x" => "00\n..\n00\n",
-      "y" => "00\n.0\n00\n",
-      "z" => "0.\n.0\n00\n",
-      " " => "..\n..\n..\n"
+      "a" => ["0.","..",".."],
+      "b" => ["0.","0.",".."],
+      "c" => ["00","..",".."],
+      "d" => ["00",".0",".."],
+      "e" => ["0.",".0",".."],
+      "f" => ["00","0.",".."],
+      "g" => ["00","00",".."],
+      "h" => ["0.","00",".."],
+      "i" => [".0","0.",".."],
+      "j" => [".0","00",".."],
+      "k" => ["0.","..","0."],
+      "l" => ["0.","0.","0."],
+      "m" => ["00","..","0."],
+      "n" => ["00",".0","0."],
+      "o" => ["0.",".0","0."],
+      "p" => ["00","0.","0."],
+      "q" => ["00","00","0."],
+      "r" => ["0.","00","0."],
+      "s" => [".0","0.","0."],
+      "t" => [".0","00","0."],
+      "u" => ["0.","..","00"],
+      "v" => ["0.","0.","00"],
+      "w" => [".0","00",".0"],
+      "x" => ["00","..","00"],
+      "y" => ["00",".0","00"],
+      "z" => ["0.",".0","00"],
+      " " => ["..","..",".."]
     })
   end
 
   it 'can take the letter "a" and show its braille pattern' do
-    expect(@translator.translate("a")).to eq("0.\n..\n..\n")
   end
 
   it 'can take entered text and make the correct braille syntax of it' do
     input = "hey"
-    expect(@translator.braille_lines(input)).to eq("0.0.00\n00.0.0\n....00\n")
+    @translator.add_char("h")
+    @translator.add_char("e")
+    @translator.add_char("y")
+    expect(@translator.output).to eq("0.0.00\n00.0.0\n....00")
   end
 end

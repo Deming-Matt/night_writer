@@ -1,18 +1,18 @@
 require 'pry'
 require './lib/translator'
-@translator = Translator.new
+translator = Translator.new
 # binding.pry
 file = File.open(ARGV[0], "r")
 file2 = File.open(ARGV[1], "w")
 
 File.open(file, "r") do |file_object|
   file_object.each_char do |char|
-    file2 << @translator.translate(char)
-    binding.pry
+     translator.add_char(char)
     # @translator.braille_lines(file2)
   end
-
+  # binding.pry
 end
+file2 << translator.output
 file2.close
 # File.write(ARGV[1], File.read(file))
 puts "Created '#{ARGV[1]}' containing #{file.read.length} characters"

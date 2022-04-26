@@ -11,20 +11,20 @@ class Translator
     @bot = []
   end
 
-  def translate(input)
-    @top << eng_braille_dict[input][0]
-    @mid << eng_braille_dict[input][1]
-    @bot << eng_braille_dict[input][2]
-    # binding.pry
-    @top.join
-    @mid.join
-    @bot.join
+  def add_char(input)
+    if eng_braille_dict[input] != nil
+      @top << eng_braille_dict[input][0]
+      @mid << eng_braille_dict[input][1]
+      @bot << eng_braille_dict[input][2]
+    end
+
   end
 
-  def braille_lines(input)
-    translate(input)
-
-    # end
+  def output
+    top = @top.join #"0.0.00"
+    mid = @mid.join #"00.0.0"
+    bot = @bot.join #"....00"
+    [top, mid, bot].join("\n")
   end
 
 end
